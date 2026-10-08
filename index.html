@@ -59,17 +59,16 @@ function row(i){
  return `<div class="it ${on?'sel':''}"><div class="nm">${esc(i.n)}<small>${esc(sub)}${q&&view=='home'?' · '+CATS[i.c][1]:''}</small></div>${ctl}</div>`}
 function list(arr,grp){let h='',g=null;arr.forEach(i=>{if(grp&&i.g!==g){g=i.g;if(g)h+=`<div class="grp">${esc(g)}</div>`}h+=row(i)});return h||'<div class="empty">ไม่พบรายการ</div>'}
 function render(){
- if(view=='hist'){$.innerHTML=hok?histHtml():codeHtml();return}
  if(!user){$.innerHTML='<h1>👤 ใส่ชื่อเพื่อสั่งของ</h1><div class="lg"><input id="nm" placeholder="ชื่อ" value="Fat Boy"><button class="pri" onclick="login()">เริ่มสั่งของ</button><div id="err"></div></div>';return}
  if(!ready){$.innerHTML='<div class="empty">กำลังโหลดรายการ…</div>';return}
  const f=document.activeElement&&document.activeElement.id=='q';
  let h='';
- if(view=='hist'){h=histHtml()}else if(view=='sum'){
+ if(view=='sum'){
   const L=ITEMS.filter(i=>sel[i.id]!=null);
   const txt=`ผู้สั่ง: ${user}\nวันที่: ${fd()}\n\n`+['fresh','dry','front'].map(c=>{const a=L.filter(i=>i.c==c);return a.length?`【${CATS[c][1]}】\n`+a.map(i=>i.c=='front'?`- ${i.n}`:`- ${i.n} ${sel[i.id]}${U(i.u)}`).join('\n'):''}).filter(Boolean).join('\n\n');
-  h=`<button class="back" onclick="go('home')">‹ กลับ</button><h1>สรุปรายการสั่ง (${L.length})</h1>`+info()+`<div class="info"><span style="color:var(--on)">${svst[0]=='⚠'?svst:''}</span></div>`+(L.length?`<textarea id="out" readonly>${esc(txt)}</textarea><button class="pri" id="cpb" onclick="cp()">คัดลอกรายการ</button><button class="pri sec" onclick="clr()">${cf?'กดอีกครั้งเพื่อยืนยันล้าง':'ล้างทั้งหมด'}</button>`:'<div class="empty">ยังไม่ได้เลือกรายการ</div>')+`<div class="bar"><button onclick="go('home')">‹ กลับหน้าแรก</button></div>`;
+  h=`<button class="back" onclick="go('home')">‹ กลับ</button><h1>สรุปรายการสั่ง (${L.length})</h1>`+info()+(L.length?`<textarea id="out" readonly>${esc(txt)}</textarea><button class="pri" id="cpb" onclick="cp()">คัดลอกรายการ</button><button class="pri sec" onclick="clr()">${cf?'กดอีกครั้งเพื่อยืนยันล้าง':'ล้างทั้งหมด'}</button>`:'<div class="empty">ยังไม่ได้เลือกรายการ</div>')+`<div class="bar"><button onclick="go('home')">‹ กลับหน้าแรก</button></div>`;
  }else{
-  if(view!='home')h+=`<button class="back" onclick="go('home')">‹ หน้าแรก</button><h1>${CATS[view][0]} ${CATS[view][1]}</h1>`;else h+='<h1 onclick="tap()">📋 สั่งของ</h1>';
+  if(view!='home')h+=`<button class="back" onclick="go('home')">‹ หน้าแรก</button><h1>${CATS[view][0]} ${CATS[view][1]}</h1>`;else h+='<h1>📋 สั่งของ</h1>';
   h+=info()+`<input type="search" id="q" placeholder="ค้นหารายการ (ไทย/อังกฤษ)" value="${esc(q)}" oninput="q=this.value;render()">`;
   if(q.trim()){const k=q.trim().toLowerCase();h+=`<div class="grp">ผลการค้นหา</div>`+list(ITEMS.filter(i=>(view=='home'||i.c==view)&&i.n.toLowerCase().includes(k)),false)}
   else if(view=='home')h+='<div class="cats">'+Object.keys(CATS).map(c=>{const n=ITEMS.filter(i=>i.c==c&&sel[i.id]!=null).length;return `<button class="cat" onclick="go('${c}')"><b>${CATS[c][0]}</b><span>${CATS[c][1]}<small>${ITEMS.filter(i=>i.c==c).length} รายการ${n?' · เลือกแล้ว '+n:''}</small></span></button>`}).join('')+'</div>';
@@ -79,7 +78,7 @@ function render(){
  $.innerHTML=h;
  if(f){const e=document.getElementById('q');e.focus();e.setSelectionRange(q.length,q.length)}
 }
-function go(v){view=v;q='';render();scrollTo(0,0);if(v=='sum')autoSave()}
+function go(v){view=v;q='';render();scrollTo(0,0)}
 function tgl(id){sel[id]!=null?delete sel[id]:sel[id]=1;save();render()}
 function setq(id,v){v=parseFloat(v);if(!(v>0))delete sel[id];else sel[id]=v;save();render()}
 function adj(id,d){const v=Math.max(0,Math.round(((sel[id]||0)+d)*100)/100);setq(id,v)}
@@ -92,43 +91,11 @@ function cp(){const t=document.getElementById('out'),b=document.getElementById('
 const today=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
 let dt=today();
 const fd=()=>dt.split('-').reverse().join('/');
-const info=()=>`<div class="info"><span>👤 ${esc(user)}</span><input type="date" value="${dt}" onchange="dt=this.value||today();if(view=='sum'){render();autoSave()}"><button onclick="logout()">เปลี่ยนชื่อ</button></div>`;
+const info=()=>`<div class="info"><span>👤 ${esc(user)}</span><input type="date" value="${dt}" onchange="dt=this.value||today();if(view=='sum')render()"><button onclick="logout()">เปลี่ยนชื่อ</button></div>`;
 function login(){const n=document.getElementById('nm').value.trim();
  if(!n){document.getElementById('err').textContent='กรุณาใส่ชื่อ';return}
  user=n;try{localStorage.setItem('stock-user',n)}catch(e){}render()}
 function logout(){user='';view='home';try{localStorage.removeItem('stock-user')}catch(e){}render()}
-let db=null,OR=[],op='',dcf='',note='',hok=false,svst='',tc=0;
-const fmt=a=>['fresh','dry','front'].map(c=>{const x=a.filter(i=>i.c==c);return x.length?`【${CATS[c][1]}】\n`+x.map(i=>c=='front'?`- ${i.n}`:`- ${i.n} ${i.q}${U(i.u)}`).join('\n'):''}).filter(Boolean).join('\n\n');
-function histHtml(){
- let h=`<button class="back" onclick="hok=false;view='home';render()">‹ ออก</button><h1>📜 ประวัติการสั่ง</h1>`;
- if(note)h+=`<div class="info"><span style="color:var(--on)">${note}</span></div>`;
- if(!OR.length)return h+'<div class="empty">ยังไม่มีประวัติการสั่ง</div>';
- OR.forEach(o=>{const open=op==o.id;
-  h+=`<div class="it" style="display:block"><div style="display:flex;justify-content:space-between;cursor:pointer" onclick="op=op=='${o.id}'?'':'${o.id}';render()"><div class="nm">${esc(o.date.split('-').reverse().join('/'))} · ${esc(o.user)}<small>${o.items.length} รายการ</small></div><span>${open?'▲':'▼'}</span></div>`;
-  if(open)h+=`<textarea readonly style="height:200px">${esc(fmt(o.items))}</textarea><button class="pri sec" onclick="delOrder('${o.id}')">${dcf==o.id?'กดอีกครั้งเพื่อยืนยันลบ':'ลบ'}</button>`;
-  h+='</div>'});
- return h}
-async function delOrder(id){if(dcf!=id){dcf=id;render();setTimeout(()=>{if(dcf==id){dcf='';if(view=='hist')render()}},4000);return}
- dcf='';try{await call({action:'delete',code:hcode,id});await loadHist()}catch(e){alert('ลบไม่สำเร็จ')}}
-
-const hh=t=>{let h=5381;for(const c of t)h=((h<<5)+h+c.codePointAt(0))>>>0;return h.toString(36)};
-const API='PASTE_YOUR_APPS_SCRIPT_URL_HERE';
-let hcode='';
-async function call(body){const r=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(body)});const j=await r.json();if(!j.ok)throw new Error(j.error||'fail');return j}
-async function loadHist(){const r=await fetch(API+'?action=history&code='+encodeURIComponent(hcode)+'&_='+Date.now());const j=await r.json();if(!j.ok)throw new Error('code');OR=j.orders;if(view=='hist')render()}
-async function autoSave(){
- const items=ITEMS.filter(i=>sel[i.id]!=null).map(i=>({c:i.c,n:i.n,u:i.u,q:sel[i.id]}));
- if(!items.length){svst='';return}
- if(API.startsWith('PASTE')){svst='⚠ ยังไม่ได้ตั้งค่า URL ของ Google Sheet';render();return}
- svst='';
- try{await call({action:'save',id:dt+'_'+hh(user),user,date:dt,items})}
- catch(e){svst='⚠ บันทึกไม่สำเร็จ ลองกดสรุปอีกครั้ง'}
- if(view=='sum')render()}
-const codeHtml=()=>'<h1>🔒 ประวัติการสั่ง</h1><div class="lg"><input id="hp" type="password" inputmode="numeric" placeholder="รหัส"><button class="pri" onclick="hlogin()">เข้าดู</button><div id="err"></div></div>';
-async function hlogin(){const c=document.getElementById('hp').value.trim(),e=document.getElementById('err');e.textContent='กำลังตรวจสอบ…';hcode=c;
- try{await loadHist();hok=true;render()}catch(x){e.textContent=API.startsWith('PASTE')?'ยังไม่ได้ตั้งค่า URL':'รหัสไม่ถูกต้อง หรือเชื่อมต่อไม่ได้'}}
-function tap(){if(++tc>=5){tc=0;view='hist';render()}setTimeout(()=>{tc=0},2500)}
-if(/history/i.test(location.hash+location.search))view='hist';
 let ready=false;
 async function loadItems(){try{const r=await fetch('items.txt',{cache:'no-cache'});if(!r.ok)throw 0;build(await r.text());ready=true;render()}
  catch(e){$.innerHTML='<div class="empty">โหลดรายการไม่สำเร็จ<br>ต้องเปิดผ่านเว็บ (ไม่ใช่เปิดไฟล์ตรง ๆ) และมีไฟล์ items.txt อยู่ข้างกัน<br><br><button class="pri" onclick="loadItems()">ลองใหม่</button></div>'}}
