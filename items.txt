@@ -1,0 +1,158 @@
+// รายการสินค้า — แก้ไขไฟล์นี้ได้เลย
+// [fresh] ของสด / [dry] ของแห้ง: ชื่อ|หน่วย|ปริมาณปกติ (เว้นว่างได้)
+// [front] ของหน้าบ้าน: ชื่อรายการบรรทัดละอัน
+// บรรทัดที่ขึ้นต้นด้วย # คือหัวข้อกลุ่ม
+
+[fresh]
+#เนื้อสัตว์ & อาหารทะเล
+Pork belly (หมูสามชั้น)|kg|10-15
+Beef chuck (เนื้อน่อง/สันคอ)|kg|10-15
+Pork mince (หมูสับ)|kg|5-10
+Beef slice (เนื้อสไลซ์)|kg|5
+Pork slice (หมูสไลซ์)|kg|5
+Beef rib (ซี่โครงเนื้อ)|pack|
+Chicken slice (ไก่สไลซ์)|kg|15-20
+Chicken thighs (สะโพกไก่)|kg|10-14
+Chicken wing (ปีกไก่)|kg|5-10
+Chicken mince (ไก่สับ)|kg|5
+เป็ด|ตัว|2
+กุ้งเล็ก (16/20)|pack|2-4
+กุ้งใหญ่|pack|1-2
+ปลาตัว|ตัว|2-3
+ปลาชิ้น|pack|
+ปลาหมึก|pack|
+Soft shell crab (ปูนิ่ม)|pack|
+#ผัก
+Chinese Broc (คะน้า)|กำ|10-15
+Carrot (แครอท)|kg|3-4
+Bean sprout (ถั่วงอก)|pack|5-8
+Capsicum (พริกหวาน)|kg|3-4
+Zucchini (ซูคินี)|kg|3-4
+Brown Onion (หอมหัวใหญ่)|kg|3-4
+Lemon (เลมอน)|kg|2-3
+Cherry Tomato (มะเขือเทศเชอร์รี่)|กล่อง|3-5
+Green beans (ถั่วแขก)|kg|2-3
+Shallot (หอมแดง)|กำ|3-5
+Potato (มันฝรั่ง)|kg|3-4
+Lemon grass (ตะไคร้)|ต้น|5-10
+Red onion (หอมแดงหัวใหญ่)|kg|2-3
+Mushroom (เห็ด)|kg|1-2
+Basil (โหระพา)|ถุง|1-2
+Garlic Chives (กุยช่าย)|กำ|2-4
+Lettuce (ผักกาดหอม)|ลูก|2-4
+Cabbage (กะหล่ำปลี)|ลูกใหญ่|1-2
+Broccoli (บรอกโคลี)|box|1
+Coriander (ผักชี)|กำ|2
+Cucumber (แตงกวา)|kg|1-2
+Long chili (พริกชี้ฟ้า)|kg|0.2-0.5
+Lime leaves (ใบมะกรูด)|ถุง|1
+Papaya (มะละกอ)|ลูก|1-2
+Galangal (ข่า)|หน่วย|
+Mint (สะระแหน่)|หน่วย|
+Taro (เผือก)|หน่วย|
+ผัก salad|หน่วย|
+#อื่นๆ (ไข่ เต้าหู้ แช่แข็ง)
+Fried tofu (เต้าหู้ทอด)|pack|3-4
+Egg (ไข่ไก่)|box|1-2
+Hard tofu (เต้าหู้แข็ง)|ก้อน|4
+Fish cake (ทอดมันปลา)|pack|1-2
+Crispy prawn roll (Prawn twister)|pack|1-2
+Prawns cake (ทอดมันกุ้ง)|pack|1-2
+
+[dry]
+#เครื่องแกง
+พริกแกงพะแนง|กระปุกเล็ก 114g|3-4
+พริกแกง Massaman|กระปุกใหญ่ 1kg|1
+พริกแกงเขียวหวาน|กระปุกเล็ก 114g|3-4
+พริกแกง Choo chee|กระปุกเล็ก 114g|1
+พริกแกงพริกขิง|กระปุกเล็ก 114g|1
+Laksa paste|กระปุก|1
+ต้มยำ paste|กระปุก|1
+Chilli paste Chun hah seng|กระปุก|1
+Kara (กะทิ)|ลัง|1
+#ซอสและเครื่องปรุง
+Chilli paste พันท้าย|กระปุก|1
+Hoisen sauce|กระปุก|1
+น้ำมันหอย สามแม่ครัว|แกลลอน|1
+น้ำมันหอย panda|กระปุก 2.27kg|1
+Oyster sauce gluten free|แกลลอน|1
+ซอสเห็ด เจ|ขวด|1
+Soy sauce เห็ดหอม|ขวด|1-2
+ภูเขาทองฝาเขียว|ขวด|1-2
+น้ำปลา ตราปลาหมึก|แกลลอน|1
+น้ำจิ้มไก่|แกลลอน|1
+น้ำจิ้มบ๊วย|ขวด|1
+น้ำส้มสายชู|แกลลอน|1
+ABC|แกลลอน|1
+น้ำมะขาม|กระปุก|1-2
+น้ำกระเทียมดอง|กระปุก|1
+น้ำตาลปี๊บ|pack|2-3
+Salt 1kg|pack|1
+Sugar|กระสอบ|1
+ขมิ้น|pack|1
+Curry powder|กระปุกใหญ่|1
+ผงผักชี|pack|1
+พริกไทยดำ เม็ดเล็ก|pack|1
+พริกไทยขาว|pack|1
+พริกแห้ง|pack|1
+คนอร์|pack|1
+#เส้น
+Laksa noodle|pack|1
+Pad Thai noodle|ลัง|1
+เส้นใหญ่ / Flat noodles|box|1-2
+วุ้นเส้น|pack|1
+#แป้ง
+แป้งทอดกรอบ ufm|pack|1
+แป้ง roll|pack|2-3
+Roti|pack|1
+#อื่นๆ (ของแห้ง/หลังบ้าน)
+ข้าว sunrice|กระสอบ|1
+ข้าวเหนียว 1kg|pack|1-2
+ขิง ginger|กระปุก|1
+Garlic peeled|pack|1
+Frozen chilli|pack|1
+Black fungus / Chopped|pack|1
+ไชโป๊|pack|1
+กุนเชียง|pack|1
+Peanut|pack|1
+Cashew nut|pack|1
+Oil|ถัง|1
+Baking soda|pack|1
+Pineapple|กระปุกใหญ่|1
+หมูหยอง|pack|1
+แคปหมู|pack|1
+งาขาว|pack|1
+ไม้เสียบ 6 inch|pack|1
+Wrap|ม้วน|1
+ถุงขยะ|ลัง|1
+น้ำยาล้างจาน|แกลลอนใหญ่|1
+คาเนชั่น|ลัง|1
+ไอติมกะทิ|box|1
+
+[front]
+Plastic box 500 ml
+Plastic box 750 ml
+Plastic box 1000 ml
+Square lid
+Round box
+Round lid
+ถาดใส่ปลา
+Plastic bag Small
+Plastic bag Medium
+Plastic bag Large
+ถุง entree
+Tissue
+Paper straw
+Paper spoon
+Chopsticks
+Wooden spork
+Docket paper
+Paper towel
+Cling wrap
+Glove black
+ถุงขยะ
+กระเทียมเจียว
+หอมเจียว
+Cashew nut
+Peanut
+Thermal roll printer
