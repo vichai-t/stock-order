@@ -1,135 +1,133 @@
-// [fresh] ของสด / [frozen] ของแช่แข็ง / [veg] ผัก / [dry] ของแห้ง / [drink] เครื่องดื่ม: ชื่อ|หน่วย|ปริมาณปกติ (เว้นว่างได้, ใส่จำนวนได้, มีคาดการณ์ปริมาณที่เคยสั่ง)
-// [front] ของหน้าบ้าน: ชื่อรายการบรรทัดละอัน (มีแค่ เอา, ไม่เอา
+// [fresh] ของสด / [frozen] ของแช่แข็ง / [veg] ผัก / [dry] ของแห้ง / [drink] เครื่องดื่ม: ชื่อ|หน่วย|ปริมาณปกติ (เว้นว่างได้)
+// [front] ของหน้าบ้าน และรายการที่เลือกแค่ เอา/ไม่เอา: ชื่อรายการบรรทัดละอัน (ไม่ต้องมี |)
 // บรรทัดที่ขึ้นต้นด้วย # คือหัวข้อกลุ่ม
 
 [fresh]
 #เนื้อสัตว์ & อาหารทะเล
-Pork belly (หมูสามชั้น)|kg|10-15
-Beef chuck (เนื้อน่อง/สันคอ)|kg|10-15
-Pork mince (หมูสับ)|kg|5-10
-Beef slice (เนื้อสไลซ์)|kg|5
-Pork slice (หมูสไลซ์)|kg|5
+Pork belly (หมูสามชั้น)|kg|5
+Beef chuck (เนื้อน่อง/สันคอ)|kg|15
+Pork mince (หมูสับ)|kg|7
+Beef slice (เนื้อสไลซ์)|kg|5-7
+Pork slice (หมูสไลซ์)|kg|2
 Beef rib (ซี่โครงเนื้อ)|pack|
-Chicken slice (ไก่สไลซ์)|kg|15-20
-Chicken thighs (สะโพกไก่)|kg|10-14
-Chicken wing (ปีกไก่)|kg|5-10
-Chicken mince (ไก่สับ)|kg|5
-เป็ด|ตัว|2
-กุ้งเล็ก (16/20)|pack|2-4
-กุ้งใหญ่|pack|1-2
-ปลาตัว|ตัว|2-3
+Chicken slice (ไก่สไลซ์)|kg|40-50
+Chicken thighs (สะโพกไก่)|kg|10
+Chicken wing (ปีกไก่)|kg|5
+Chicken mince (ไก่สับ)|kg|2-3
+เป็ด|ตัว|
+กุ้งเล็ก (16/20)|pack|
+กุ้งใหญ่|pack|
+ปลาตัว|ตัว|
 ปลาชิ้น|pack|
 
 [frozen]
 #ของแช่แข็ง
 Soft shell crab (ปูนิ่ม)|pack|
 ปลาหมึก|pack|
-Crispy prawn roll (Prawn twister)|pack|1-2
-Prawns cake (ทอดมันกุ้ง)|pack|1-2
+Crispy prawn roll (Prawn twister)|pack|2
+Prawns cake (ทอดมันกุ้ง)|pack|2-3
 Fish cake (ทอดมันปลา)|pack|1-2
-Frozen chilli|pack|1
+Frozen chilli|pack|2
 ไอติมกะทิ|box|1
 
 [veg]
 #ผัก
-Chinese Broc (คะน้า)|กำ|10-15
-Carrot (แครอท)|kg|3-4
-Bean sprout (ถั่วงอก)|pack|5-8
-Capsicum (พริกหวาน)|kg|3-4
-Zucchini (ซูคินี)|kg|3-4
-Brown Onion (หอมหัวใหญ่)|kg|3-4
-Lemon (เลมอน)|kg|2-3
-Cherry Tomato (มะเขือเทศเชอร์รี่)|กล่อง|3-5
-Green beans (ถั่วแขก)|kg|2-3
+Chinese Broc (คะน้า)|กำ|10-20
+Carrot (แครอท)|kg|10
+Bean sprout (ถั่วงอก)|pack|5-10
+Capsicum (พริกหวาน)|kg|4-8
+Zucchini (ซูคินี)|kg|4-5
+Brown Onion (หอมหัวใหญ่)|kg|10
+Lemon (เลมอน)|kg|3-5
+Cherry Tomato (มะเขือเทศเชอร์รี่)|กล่อง|4-6
+Green beans (ถั่วแขก)|kg|4-5
 Shallots (ต้นหอม)|กำ|3-5
-Potato (มันฝรั่ง)|kg|3-4
-Lemon grass (ตะไคร้)|ต้น|5-10
-Red onion (หอมแดง)|kg|2-3
-Mushroom (เห็ด)|kg|1-2
-Basil (โหระพา)|g|100-200
-Garlic Chives (กุยช่าย)|กำ|2-4
-Lettuce (ผักกาดหอม)|ลูก|2-4
-Cabbage (กะหล่ำปลี)|ลูกใหญ่|1-2
+Potato (มันฝรั่ง)|kg|5-10
+Lemon grass (ตะไคร้)|ต้น|5
+Red onion (หอมแดง)|kg|3
+Mushroom (เห็ด)|kg|1-3
+Basil (โหระพา)|g|500
+Garlic Chives (กุยช่าย)|กำ|1
+Lettuce (ผักกาดหอม)|ลูก|1-2
+Cabbage (กะหล่ำปลี)|ลูกใหญ่|1
 Broccoli (บรอกโคลี)|box|1
-Coriander (ผักชี)|กำ|2
-Cucumber (แตงกวา)|kg|1-2
-Long chili (พริกชี้ฟ้า)|kg|0.2-0.5
+Coriander (ผักชี)|กำ|1
+Cucumber (แตงกวา)|g|500-1000
+Long chili (พริกชี้ฟ้า)|g|200
 Lime leaves (ใบมะกรูด)|g|100
-Papaya (มะละกอ)|ลูก|1-2
+Papaya (มะละกอ)|ลูก|1
 Galangal (ข่า)|kg|
-Mint (สะระแหน่)|กำ|
+Mint (สะระแหน่)|กำ|1
 Taro (เผือก)|kg|
 ผัก salad|kg|
 Ginger (ขิง)|กระปุก|1
-Garlic peeled|pack|1
+Garlic peeled|pack|2
 
 #อื่นๆ (ไข่ เต้าหู้)
-Fried tofu (เต้าหู้ทอด)|pack|3-4
-Egg (ไข่ไก่)|box|1-2
-Hard tofu (เต้าหู้แข็ง)|ก้อน|4
+Fried tofu (เต้าหู้ทอด)|pack|3
+Egg (ไข่ไก่)|box|1
+Hard tofu (เต้าหู้แข็ง)|ก้อน|2
 
 [dry]
 #เครื่องแกง
-พริกแกงพะแนง|กระปุกเล็ก 114g|3-4
-พริกแกง Massaman|กระปุกใหญ่ 1kg|1
-พริกแกงเขียวหวาน|กระปุกเล็ก 114g|3-4
-พริกแกง Choo chee|กระปุกเล็ก 114g|1
-พริกแกงพริกขิง|กระปุกเล็ก 114g|1
-Laksa paste|กระปุก|1
-ต้มยำ paste|กระปุก|1
+พริกแกงพะแนง|กระปุกเล็ก 114g|10-18
+พริกแกง Massaman|กระปุกใหญ่ 1kg|3-4
+พริกแกงเขียวหวาน|กระปุกเล็ก 114g|8-12
+พริกแกง Choo chee|กระปุกเล็ก 114g|1-2
+พริกแกงพริกขิง|กระปุกเล็ก 114g|2-8
+Laksa paste|กระปุก|
+ต้มยำ paste|กระปุก|2-4
 Chilli paste (พริกเผา) Chun hah seng|กระปุก|1
-Kara (กะทิ)|ลัง|1
+Kara (กะทิ)|ลัง|2-3
 #ซอสและเครื่องปรุง
 Chilli paste (พริกเผา) พันท้าย|กระปุก|1
 Hoisen sauce|กระปุก|1
 Oyster sauce (ซอสหอยนางรม) สามแม่ครัว|แกลลอน|1
-Oyster sauce (ซอสหอยนางรม) panda|กระปุก 2.27kg|1
-Oyster sauce (ซอสหอยนางรม) gluten free|แกลลอน|1
+Oyster sauce (ซอสหอยนางรม) panda|กระปุก 2.27kg|2
+Oyster sauce (ซอสหอยนางรม) gluten free|แกลลอน|
 ซอสเห็ด เจ|ขวด|1
-Soy sauce (ซีอิ๊ว) เห็ดหอม|ขวด|1-2
-Soy sauce (ซีอิ๊ว) ภูเขาทองฝาเขียว|ขวด|1-2
+Soy sauce (ซีอิ๊ว) เห็ดหอม|ขวด|2-4
+Soy sauce (ซีอิ๊ว) ภูเขาทองฝาเขียว|ขวด|1-4
 น้ำปลา ตราปลาหมึก|แกลลอน|1
 น้ำจิ้มไก่|แกลลอน|1
 น้ำจิ้มบ๊วย|ขวด|1
 น้ำส้มสายชู|แกลลอน|1
 ABC|แกลลอน|1
-น้ำมะขาม|กระปุก|1-2
+น้ำมะขาม|กระปุก|6
 น้ำกระเทียมดอง|กระปุก|1
-น้ำตาลปี๊บ|pack|2-3
+น้ำตาลปี๊บ|pack|5-15
 Salt 1kg|pack|1
 Sugar|กระสอบ|1
 ขมิ้น|pack|1
-Curry powder|กระปุกใหญ่|1
-ผงผักชี|pack|1
-พริกไทยดำ เม็ดเล็ก|pack|1
-พริกไทยขาว|pack|1
+Curry powder|กระปุกใหญ่|
+ผงผักชี|pack|
+พริกไทยดำ เม็ดเล็ก|pack|
+พริกไทยขาว|pack|
 พริกแห้ง|pack|1
-คนอร์|pack|1
+คนอร์|pack|3-4
 #เส้น
 Laksa noodle|pack|1
 Pad Thai noodle|ลัง|1
-Flat noodles (เส้นใหญ่)|box|1-2
-วุ้นเส้น|pack|1
+Flat noodles (เส้นใหญ่)|box|1
+วุ้นเส้น|pack|2
 #แป้ง
-แป้งทอดกรอบ ufm|pack|1
-แป้ง roll|pack|2-3
-Roti|pack|1
+แป้งทอดกรอบ ufm|pack|3
+แป้ง roll|pack|10
+Roti|pack|2-4
 #อื่นๆ (ของแห้ง/หลังบ้าน)
-ข้าว sunrice|กระสอบ|1
-ข้าวเหนียว 1kg|pack|1-2
+ข้าว sunrice|กระสอบ|2-3
+ข้าวเหนียว 1kg|pack|1
 Black fungus / Chopped|pack|1
 ไชโป๊|pack|1
 กุนเชียง|pack|1
-Peanut|pack|1
-Cashew nut|pack|1
-Oil|ถัง|1
+Oil|ถัง|2
 Baking soda|pack|1
 Pineapple (สับปะรดกระปุกใหญ่)|กระปุกใหญ่|1
 หมูหยอง|pack|1
-แคปหมู|pack|1
+แคปหมู|pack|1-3
 งาขาว|pack|1
-ไม้เสียบ 6 inch|pack|1
-น้ำยาล้างจาน|แกลลอนใหญ่|1
+ไม้เสียบ 6 inch|pack|3-6
+น้ำยาล้างจาน|แกลลอนใหญ่|
 Carnation (คาเนชั่น)|ลัง|1
 
 [front]
@@ -161,13 +159,13 @@ Peanut (ถั่ว)
 
 [drink]
 #เครื่องดื่ม
-Water (น้ำเปล่า)|ลัง|
-Sparkling Water (น้ำโซดา)|ลัง|
-Coke (โค้ก)|ลัง|
-Coke Zero (โค้กซีโร่)|ลัง|
-Fanta (น้ำส้ม)|ลัง|
+Water (น้ำเปล่า)|ลัง|2
+Sparkling Water (น้ำโซดา)|ลัง|1
+Coke (โค้ก)|ลัง|1
+Coke Zero (โค้กซีโร่)|ลัง|2
+Fanta (น้ำส้ม)|ลัง|1
 Solo (โซโล)|ลัง|
 Sprite (สไปรท์)|ลัง|
-Ginger Beer (จินเจอร์เบียร์)|ลัง|
-Thai milk tea (ชาไทย)|ลัง|
-Green milk tea (ชาเขียว)|ลัง|
+Ginger Beer (จินเจอร์เบียร์)|ลัง|1
+Thai milk tea (ชาไทย)
+Green milk tea (ชาเขียว)
