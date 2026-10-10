@@ -11,7 +11,7 @@ body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-
 h1{font-size:20px;margin:8px 0 10px;padding:13px 16px;border-radius:14px;color:#fff;background:var(--ac)}
 .info{display:flex;align-items:center;gap:8px;margin-bottom:10px;font-size:14px}.info span{flex:1}.info input,.lg input{padding:8px;border:1px solid var(--bd);border-radius:8px;background:var(--card);color:var(--tx);font-size:15px}.info button{border:1px solid var(--bd);background:var(--card);color:var(--mut);border-radius:8px;padding:8px 10px;cursor:pointer}
 .lg{display:flex;flex-direction:column;gap:10px;margin-top:20px}.lg input{padding:13px;font-size:16px}#err{color:#e03131;text-align:center;min-height:20px}
-.cat:nth-child(1){border-left:6px solid #f76707}.cat:nth-child(2){border-left:6px solid #fab005}.cat:nth-child(3){border-left:6px solid #2f9e44}
+.cat:nth-child(3n+1){border-left:6px solid #f76707}.cat:nth-child(3n+2){border-left:6px solid #fab005}.cat:nth-child(3n){border-left:6px solid #2f9e44}
 input[type=search]{width:100%;padding:12px 14px;font-size:16px;border:1px solid var(--bd);border-radius:12px;background:var(--card);color:var(--tx)}
 .cats{display:grid;grid-template-columns:1fr;gap:10px;margin:14px 0}
 .cat{display:flex;align-items:center;gap:14px;padding:18px;background:var(--card);border:1px solid var(--bd);border-radius:14px;font-size:18px;cursor:pointer;color:var(--tx);text-align:left;width:100%}
@@ -35,14 +35,14 @@ textarea{width:100%;height:260px;margin:10px 0;padding:10px;font-size:14px;borde
 </style></head><body>
 <div id="app"></div>
 <script>
-const CATS={fresh:['🥩','ของสด'],dry:['🥫','ของแห้ง'],front:['🍽️','ของหน้าบ้าน']};
+const CATS={fresh:['🥩','ของสด'],frozen:['❄️','ของแช่แข็ง'],veg:['🥦','ผัก'],dry:['🥫','ของแห้ง'],drink:['🥤','เครื่องดื่ม'],front:['🍽️','ของหน้าบ้าน']};
 const ITEMS=[];
 function build(txt){ITEMS.length=0;let c='',g='';
  txt.split(/\r?\n/).forEach(l=>{l=l.trim();if(!l||l.startsWith('//'))return;
-  const m=l.match(/^\[(fresh|dry|front)\]$/);if(m){c=m[1];g='';return}
+  const m=l.match(/^\[(\w+)\]$/);if(m){c=CATS[m[1]]?m[1]:'';g='';return}
   if(l[0]=='#'){g=l.slice(1).trim();return}
   if(!c)return;
-  if(c=='front'){ITEMS.push({id:c+ITEMS.length,c,g:'',n:l,u:'',s:''});return}
+  if(c=='front'||!l.includes('|')){ITEMS.push({id:c+ITEMS.length,c,g:c=='front'?'':g,n:l.replace(/\|+$/,'').trim(),u:'',s:'',t:1});return}
   const[n,u,s]=l.split('|');ITEMS.push({id:c+ITEMS.length,c,g,n:n.trim(),u:(u||'').trim(),s:(s||'').trim()})})}
 let sel={},view='home',q='',user='';
 try{user=localStorage.getItem('stock-user')||''}catch(e){}
@@ -54,7 +54,7 @@ const cnt=()=>Object.keys(sel).length;
 function row(i){
  const v=sel[i.id],on=v!=null;
  const sub=[i.u,i.s?'ปกติ '+i.s:''].filter(Boolean).join(' · ');
- const ctl=i.c=='front'?`<button class="tg ${on?'on':''}" onclick="tgl('${i.id}')">${on?'✓ เอา':'ไม่เอา'}</button>`
+ const ctl=i.t?`<button class="tg ${on?'on':''}" onclick="tgl('${i.id}')">${on?'✓ เอา':'ไม่เอา'}</button>`
  :`<div class="st"><button onclick="adj('${i.id}',-1)">−</button><input type="number" inputmode="decimal" min="0" value="${on?v:0}" onchange="setq('${i.id}',this.value)"><button onclick="adj('${i.id}',1)">+</button></div>`;
  return `<div class="it ${on?'sel':''}"><div class="nm">${esc(i.n)}<small>${esc(sub)}${q&&view=='home'?' · '+CATS[i.c][1]:''}</small></div>${ctl}</div>`}
 function list(arr,grp){let h='',g=null;arr.forEach(i=>{if(grp&&i.g!==g){g=i.g;if(g)h+=`<div class="grp">${esc(g)}</div>`}h+=row(i)});return h||'<div class="empty">ไม่พบรายการ</div>'}
@@ -65,7 +65,7 @@ function render(){
  let h='';
  if(view=='sum'){
   const L=ITEMS.filter(i=>sel[i.id]!=null);
-  const txt=`ผู้สั่ง: ${user}\nวันที่: ${fd()}\n\n`+['fresh','dry','front'].map(c=>{const a=L.filter(i=>i.c==c);return a.length?`【${CATS[c][1]}】\n`+a.map(i=>i.c=='front'?`- ${i.n}`:`- ${i.n} ${sel[i.id]}${U(i.u)}`).join('\n'):''}).filter(Boolean).join('\n\n');
+  const txt=`ผู้สั่ง: ${user}\nวันที่: ${fd()}\n\n`+Object.keys(CATS).map(c=>{const a=L.filter(i=>i.c==c);return a.length?`【${CATS[c][1]}】\n`+a.map(i=>i.t?`- ${i.n}`:`- ${i.n} ${sel[i.id]}${U(i.u)}`).join('\n'):''}).filter(Boolean).join('\n\n');
   h=`<button class="back" onclick="go('home')">‹ กลับ</button><h1>สรุปรายการสั่ง (${L.length})</h1>`+info()+(L.length?`<textarea id="out" readonly>${esc(txt)}</textarea><button class="pri" id="cpb" onclick="cp()">คัดลอกรายการ</button><button class="pri sec" onclick="clr()">${cf?'กดอีกครั้งเพื่อยืนยันล้าง':'ล้างทั้งหมด'}</button>`:'<div class="empty">ยังไม่ได้เลือกรายการ</div>')+`<div class="bar"><button onclick="go('home')">‹ กลับหน้าแรก</button></div>`;
  }else{
   if(view!='home')h+=`<button class="back" onclick="go('home')">‹ หน้าแรก</button><h1>${CATS[view][0]} ${CATS[view][1]}</h1>`;else h+='<h1>📋 สั่งของ</h1>';
