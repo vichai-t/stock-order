@@ -65,7 +65,7 @@ function render(){
  let h='';
  if(view=='sum'){
   const L=ITEMS.filter(i=>sel[i.id]!=null);
-  const txt=`ผู้สั่ง: ${user}\nวันที่: ${fd()}\n\n`+Object.keys(CATS).map(c=>{const a=L.filter(i=>i.c==c);return a.length?`【${CATS[c][1]}】\n`+a.map(i=>i.t?`- ${i.n}`:`- ${i.n} ${sel[i.id]}${U(i.u)}`).join('\n'):''}).filter(Boolean).join('\n\n');
+  const txt=`ผู้สั่ง: ${user}\nวันที่: ${fd()}\n\n`+Object.keys(CATS).map(c=>{const a=L.filter(i=>i.c==c);return a.length?`【${CATS[c][1]}】\n`+a.map(i=>i.t?`- ${SN(i.n)}`:`- ${SN(i.n)} ${sel[i.id]}${U(i.u)}`).join('\n'):''}).filter(Boolean).join('\n\n');
   h=`<button class="back" onclick="go('home')">‹ กลับ</button><h1>สรุปรายการสั่ง (${L.length})</h1>`+info()+(L.length?`<textarea id="out" readonly>${esc(txt)}</textarea><button class="pri" id="cpb" onclick="cp()">คัดลอกรายการ</button><button class="pri sec" onclick="clr()">${cf?'กดอีกครั้งเพื่อยืนยันล้าง':'ล้างทั้งหมด'}</button>`:'<div class="empty">ยังไม่ได้เลือกรายการ</div>')+`<div class="bar"><button onclick="go('home')">‹ กลับหน้าแรก</button></div>`;
  }else{
   if(view!='home')h+=`<button class="back" onclick="go('home')">‹ หน้าแรก</button><h1>${CATS[view][0]} ${CATS[view][1]}</h1>`;else h+='<h1>📋 สั่งของ</h1>';
@@ -83,6 +83,7 @@ function tgl(id){sel[id]!=null?delete sel[id]:sel[id]=1;save();render()}
 function setq(id,v){v=parseFloat(v);if(!(v>0))delete sel[id];else sel[id]=v;save();render()}
 function adj(id,d){const v=Math.max(0,Math.round(((sel[id]||0)+d)*100)/100);setq(id,v)}
 let cf=false;
+const SN=n=>n.replace(/\s*\([^)]*\)/g,'').replace(/\s{2,}/g,' ').trim();
 const U=u=>{u=(u||'').replace(/\s+[\d.]+\s*(g|kg)$/i,'').trim();return u&&u!=='-'?' '+u:''};
 function clr(){if(!cf){cf=true;render();setTimeout(()=>{if(cf){cf=false;if(view=='sum')render()}},4000)}else{sel={};save();cf=false;render()}}
 function cp(){const t=document.getElementById('out'),b=document.getElementById('cpb');t.select();let ok=false;try{ok=document.execCommand('copy')}catch(e){}
