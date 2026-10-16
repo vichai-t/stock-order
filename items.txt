@@ -14,7 +14,7 @@ Chicken slice (ไก่สไลซ์)|kg|40-50
 Chicken thighs (สะโพกไก่)|kg|10
 Chicken wing (ปีกไก่)|kg|5
 Chicken mince (ไก่สับ)|kg|2-3
-เป็ด|ตัว|
+เป็ด|ตัว|2-3
 กุ้งเล็ก (16/20)|pack|
 กุ้งใหญ่|pack|
 ปลาตัว|ตัว|
@@ -23,16 +23,16 @@ Chicken mince (ไก่สับ)|kg|2-3
 [frozen]
 #ของแช่แข็ง
 Soft shell crab (ปูนิ่ม)|pack|
-ปลาหมึก|pack|
+Squid (ปลาหมึก)|pack|
 Crispy prawn roll (Prawn twister)|pack|2
 Prawns cake (ทอดมันกุ้ง)|pack|2-3
 Fish cake (ทอดมันปลา)|pack|1-2
-Frozen chilli|pack|2
+Frozen chilli (พริกแช่แข็ง)|pack|2
 ไอติมกะทิ|box|1
 
 [veg]
 #ผัก
-Chinese Broc (คะน้า)|กำ|10-20
+Chinese Broccoli (คะน้า)|กำ|10-20
 Carrot (แครอท)|kg|10
 Bean sprout (ถั่วงอก)|pack|5-10
 Capsicum (พริกหวาน)|kg|4-8
@@ -59,9 +59,9 @@ Papaya (มะละกอ)|ลูก|1
 Galangal (ข่า)|kg|
 Mint (สะระแหน่)|กำ|1
 Taro (เผือก)|kg|
-ผัก salad|kg|
+Mix salad (ผักสลัด)|kg|
 Ginger (ขิง)|กระปุก|1
-Garlic peeled|pack|2
+Garlic peeled (กระเทียมแกะเปลือก)|pack|2
 
 #อื่นๆ (ไข่ เต้าหู้)
 Fried tofu (เต้าหู้ทอด)|pack|3
@@ -120,7 +120,7 @@ Roti|pack|2-4
 Black fungus / Chopped|pack|1
 ไชโป๊|pack|1
 กุนเชียง|pack|1
-Oil|ถัง|2
+Oil (น้ำมัน)|ถัง|2
 Baking soda|pack|1
 Pineapple (สับปะรดกระปุกใหญ่)|กระปุกใหญ่|1
 หมูหยอง|pack|1
@@ -166,6 +166,6 @@ Coke Zero (โค้กซีโร่)|ลัง|2
 Fanta (น้ำส้ม)|ลัง|1
 Solo (โซโล)|ลัง|
 Sprite (สไปรท์)|ลัง|
-Ginger Beer (จินเจอร์เบียร์)|ลัง|1
+Ginger Beer |ลัง|1
 Thai milk tea (ชาไทย)
 Green milk tea (ชาเขียว)
