@@ -56,7 +56,7 @@ function row(i){
  const sub=[i.u,i.s?'ปกติ '+i.s:''].filter(Boolean).join(' · ');
  const ctl=i.t?`<button class="tg ${on?'on':''}" onclick="tgl('${i.id}')">${on?'✓ เอา':'ไม่เอา'}</button>`
  :`<div class="st"><button onclick="adj('${i.id}',-1)">−</button><input type="number" inputmode="decimal" min="0" value="${on?v:0}" onchange="setq('${i.id}',this.value)"><button onclick="adj('${i.id}',1)">+</button></div>`;
- return `<div class="it ${on?'sel':''}"><div class="nm">${esc(i.n)}<small>${esc(sub)}${q&&view=='home'?' · '+CATS[i.c][1]:''}</small></div>${ctl}</div>`}
+ return `<div class="it ${on?'sel':''}"><div class="nm">${esc(i.n)}<small>${esc(sub)}${q?' · '+CATS[i.c][1]:''}</small></div>${ctl}</div>`}
 function list(arr,grp){let h='',g=null;arr.forEach(i=>{if(grp&&i.g!==g){g=i.g;if(g)h+=`<div class="grp">${esc(g)}</div>`}h+=row(i)});return h||'<div class="empty">ไม่พบรายการ</div>'}
 function render(){
  if(!user){$.innerHTML='<h1>👤 ใส่ชื่อเพื่อสั่งของ</h1><div class="lg"><input id="nm" placeholder="ชื่อ" value="Fat Boy"><button class="pri" onclick="login()">เริ่มสั่งของ</button><div id="err"></div></div>';return}
@@ -70,7 +70,7 @@ function render(){
  }else{
   if(view!='home')h+=`<button class="back" onclick="go('home')">‹ หน้าแรก</button><h1>${CATS[view][0]} ${CATS[view][1]}</h1>`;else h+='<h1>📋 สั่งของ</h1>';
   h+=info()+`<input type="search" id="q" placeholder="ค้นหารายการ (ไทย/อังกฤษ)" value="${esc(q)}" oninput="q=this.value;render()">`;
-  if(q.trim()){const k=q.trim().toLowerCase();h+=`<div class="grp">ผลการค้นหา</div>`+list(ITEMS.filter(i=>(view=='home'||i.c==view)&&i.n.toLowerCase().includes(k)),false)}
+  if(q.trim()){const k=q.trim().toLowerCase();h+=`<div class="grp">ผลการค้นหา</div>`+list(ITEMS.filter(i=>i.n.toLowerCase().includes(k)),false)}
   else if(view=='home')h+='<div class="cats">'+Object.keys(CATS).map(c=>{const n=ITEMS.filter(i=>i.c==c&&sel[i.id]!=null).length;return `<button class="cat" onclick="go('${c}')"><b>${CATS[c][0]}</b><span>${CATS[c][1]}<small>${ITEMS.filter(i=>i.c==c).length} รายการ${n?' · เลือกแล้ว '+n:''}</small></span></button>`}).join('')+'</div>';
   else h+=list(ITEMS.filter(i=>i.c==view),true);
   if(cnt())h+=`<div class="bar"><button onclick="go('sum')">ดูสรุป (${cnt()} รายการ)</button></div>`;
